@@ -4,12 +4,16 @@
 
 [![](https://user-images.githubusercontent.com/56996/103166797-f807ee00-4868-11eb-9818-c661584274c8.gif)](#hydro)
 
+## JJ (Jujutsu) Support
+
+This is a fork of [hydro](https://github.com/jorgebucaran/hydro) that adds support for [Jujutsu (jj)](https://github.com/jj-vcs/jj) repositories. When a jj repo is detected, the prompt displays jj bookmark names, working-copy status, and ahead/behind counts instead of git branch info. Git repos continue to work as before.
+
 ## Installation
 
 Install with [Fisher](https://github.com/jorgebucaran/fisher):
 
 ```console
-fisher install jorgebucaran/hydro
+fisher install cernoh/hydrojjen
 ```
 
 ## Features
