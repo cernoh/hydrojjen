@@ -16,7 +16,7 @@ function _hydro_pwd --on-variable PWD --on-variable hydro_ignored_git_paths --on
 
     test "$fish_prompt_pwd_dir_length" = 0 && set path_sep
 
-    if set --query repo_root[1] && ! contains -- $repo_root $hydro_ignored_git_paths
+    if test -n "$repo_root" && ! contains -- $repo_root $hydro_ignored_git_paths
         set --erase _hydro_skip_git_prompt
     else
         set --global _hydro_skip_git_prompt
@@ -114,7 +114,7 @@ function _hydro_prompt --on-event fish_prompt
 
             command git diff-index --quiet HEAD 2>/dev/null
             test \$status -eq 1 ||
-                count (command git ls-files --others --exclude-standard (command git rev-parse --show-toplevel)) >/dev/null && set info \"$hydro_symbol_git_dirty\"
+                count (command git ls-files --others --exclude-standard (command git rev-parse --show-toplevel 2>/dev/null)) >/dev/null 2>/dev/null && set info \"$hydro_symbol_git_dirty\"
 
             for fetch in $hydro_fetch false
                 command git rev-list --count --left-right @{upstream}...@ 2>/dev/null |
